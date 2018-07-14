@@ -26,6 +26,7 @@
             <artifactId>guiced-persistence</artifactId>
             <version>${project.version}</version>
             <classifier>${jwebmp.runtime.classifier}</classifier>
+            <type>jar</type>
         </dependency>
 
         <dependency>
@@ -60,6 +61,7 @@
             <type>jar</type>
 			<scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>javax.persistence-api</artifactId>
