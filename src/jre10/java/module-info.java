@@ -1,3 +1,6 @@
+import com.jwebmp.guicedpersistence.jpa.implementations.JPAAutomatedTransactionHandler;
+import com.jwebmp.guicedpersistence.services.ITransactionHandler;
+
 module com.jwebmp.guicedpersistence.jpa {
 	exports com.jwebmp.guicedpersistence.jpa;
 	requires aopalliance;
@@ -11,4 +14,6 @@ module com.jwebmp.guicedpersistence.jpa {
 	requires java.transaction;
 
 	exports com.jwebmp.guicedpersistence.jpa.implementations to com.jwebmp.guicedinjection;
+	provides ITransactionHandler with JPAAutomatedTransactionHandler;
+
 }
