@@ -2,11 +2,11 @@ package com.jwebmp.guicedpersistence.jpa.implementations;
 
 import com.google.inject.matcher.Matchers;
 import com.jwebmp.guicedinjection.abstractions.GuiceInjectorModule;
-import com.jwebmp.guicedinjection.interfaces.GuiceDefaultBinder;
+import com.jwebmp.guicedinjection.interfaces.IGuiceDefaultBinder;
 
 @SuppressWarnings("unused")
 public class JPAGuicedPersistenceInterceptionBinding
-		extends GuiceDefaultBinder
+		implements IGuiceDefaultBinder<GuiceInjectorModule>
 {
 
 	@Override

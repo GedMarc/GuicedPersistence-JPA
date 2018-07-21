@@ -1,4 +1,6 @@
+import com.jwebmp.guicedinjection.interfaces.IGuiceDefaultBinder;
 import com.jwebmp.guicedpersistence.jpa.implementations.JPAAutomatedTransactionHandler;
+import com.jwebmp.guicedpersistence.jpa.implementations.JPAGuicedPersistenceInterceptionBinding;
 import com.jwebmp.guicedpersistence.services.ITransactionHandler;
 
 module com.jwebmp.guicedpersistence.jpa {
@@ -14,6 +16,8 @@ module com.jwebmp.guicedpersistence.jpa {
 	requires java.transaction;
 
 	exports com.jwebmp.guicedpersistence.jpa.implementations to com.jwebmp.guicedinjection;
+
 	provides ITransactionHandler with JPAAutomatedTransactionHandler;
+	provides IGuiceDefaultBinder with JPAGuicedPersistenceInterceptionBinding;
 
 }
