@@ -15,7 +15,7 @@ module com.jwebmp.guicedpersistence.jpa {
 	requires java.sql;
 	requires java.transaction;
 
-	exports com.jwebmp.guicedpersistence.jpa.implementations to com.jwebmp.guicedinjection;
+	exports com.jwebmp.guicedpersistence.jpa.implementations to com.jwebmp.guicedinjection, com.jwebmp.examples.demos.homepage;
 
 	provides ITransactionHandler with JPAAutomatedTransactionHandler;
 	provides IGuiceDefaultBinder with JPAGuicedPersistenceInterceptionBinding;

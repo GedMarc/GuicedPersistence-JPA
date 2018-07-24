@@ -14,9 +14,14 @@ public class JPAAutomatedTransactionHandler
 		//No config required
 	}
 
-	public static void setActive(boolean ACTIVE)
+	/**
+	 * Sets this Automated transaction handler to active
+	 *
+	 * @param active
+	 */
+	public static void setActive(boolean active)
 	{
-		JPAAutomatedTransactionHandler.ACTIVE = ACTIVE;
+		JPAAutomatedTransactionHandler.ACTIVE = active;
 	}
 
 	@Override
