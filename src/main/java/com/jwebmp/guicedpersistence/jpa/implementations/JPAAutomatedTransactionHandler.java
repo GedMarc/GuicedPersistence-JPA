@@ -25,19 +25,19 @@ public class JPAAutomatedTransactionHandler
 	}
 
 	@Override
-	public void beginTransacation(boolean createNew, boolean transactionExists, EntityManager entityManager)
+	public void beginTransacation(boolean createNew, EntityManager entityManager)
 	{
 		if (createNew)
 		{
 			if (!entityManager.getTransaction()
-			                  .isActive() && !transactionExists)
+			                  .isActive() && !transactionExists(entityManager))
 			{
 				entityManager.getTransaction()
 				             .begin();
 			}
 		}
 		if (!entityManager.getTransaction()
-		                  .isActive() && !transactionExists)
+		                  .isActive() && !transactionExists(entityManager))
 		{
 			entityManager.getTransaction()
 			             .begin();
@@ -45,23 +45,30 @@ public class JPAAutomatedTransactionHandler
 	}
 
 	@Override
-	public void commitTransacation(boolean createNew, boolean transactionExists, EntityManager entityManager)
+	public void commitTransacation(boolean createNew, EntityManager entityManager)
 	{
 		if (createNew)
 		{
 			if (entityManager.getTransaction()
-			                 .isActive() && !transactionExists)
+			                 .isActive() && !transactionExists(entityManager))
 			{
 				entityManager.getTransaction()
 				             .commit();
 			}
 		}
 		if (entityManager.getTransaction()
-		                 .isActive() && !transactionExists)
+		                 .isActive() && !transactionExists(entityManager))
 		{
 			entityManager.getTransaction()
 			             .commit();
 		}
+	}
+
+	@Override
+	public boolean transactionExists(EntityManager entityManager)
+	{
+		return entityManager.getTransaction()
+		                    .isActive();
 	}
 
 	@Override
