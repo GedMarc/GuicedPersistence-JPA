@@ -47,17 +47,7 @@ public class JPAAutomatedTransactionHandler
 	@Override
 	public void commitTransacation(boolean createNew, EntityManager entityManager)
 	{
-		if (createNew)
-		{
-			if (entityManager.getTransaction()
-			                 .isActive() && !transactionExists(entityManager))
-			{
-				entityManager.getTransaction()
-				             .commit();
-			}
-		}
-		if (entityManager.getTransaction()
-		                 .isActive() && !transactionExists(entityManager))
+		if (transactionExists(entityManager))
 		{
 			entityManager.getTransaction()
 			             .commit();
