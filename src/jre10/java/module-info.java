@@ -19,5 +19,6 @@ module com.jwebmp.guicedpersistence.jpa {
 
 	provides ITransactionHandler with JPAAutomatedTransactionHandler;
 	provides IGuiceDefaultBinder with JPAGuicedPersistenceInterceptionBinding;
-	opens com.jwebmp.guicedpersistence.jpa to com.fasterxml.jackson.databind;
+	opens com.jwebmp.guicedpersistence.jpa to com.fasterxml.jackson.databind,com.google.guice;
+	opens com.jwebmp.guicedpersistence.jpa.implementations to com.fasterxml.jackson.databind,com.google.guice;
 }
