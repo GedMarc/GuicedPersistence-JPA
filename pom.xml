@@ -6,7 +6,7 @@
 
     <parent>
         <groupId>com.jwebmp</groupId>
-        <artifactId>jwebmp-bom</artifactId>
+        <artifactId>jwebmp-parent</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
     </parent>
 
@@ -15,7 +15,7 @@
 
     <name>Guiced Persistence - JPA</name>
     <description>A complete JPA 2.1 implementation for Standalone or EE Implementation. Enables Multiple Persistence units
-        with  annotated injection support aPerfect for Guice implementations, test suites, and Guice enabled Web Applications or EAR Projects.
+        with annotated injection support aPerfect for Guice implementations, test suites, and Guice enabled Web Applications or EAR Projects.
         Requires JDK 8 and up
     </description>
     <url>https://github.com/GedMarc/GuicedPersistence-JPA</url>
@@ -78,7 +78,7 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <type>jar</type>
-			<scope>test</scope>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -106,10 +106,10 @@
         <profile>
             <id>jdk8</id>
             <dependencies>
-				<dependency>
-					<groupId>javax.transaction</groupId>
-					<artifactId>jta</artifactId>
-				</dependency>
+                <dependency>
+                    <groupId>javax.transaction</groupId>
+                    <artifactId>jta</artifactId>
+                </dependency>
             </dependencies>
         </profile>
 
