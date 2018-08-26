@@ -14,11 +14,12 @@ module com.jwebmp.guicedpersistence.jpa {
 	requires com.jwebmp.logmaster;
 	requires java.sql;
 	requires java.transaction;
+	requires com.google.guice.extensions.persist;
 
 	exports com.jwebmp.guicedpersistence.jpa.implementations to com.jwebmp.guicedinjection, com.jwebmp.examples.demos.homepage;
 
 	provides ITransactionHandler with JPAAutomatedTransactionHandler;
 	provides IGuiceDefaultBinder with JPAGuicedPersistenceInterceptionBinding;
-	opens com.jwebmp.guicedpersistence.jpa to com.fasterxml.jackson.databind,com.google.guice;
-	opens com.jwebmp.guicedpersistence.jpa.implementations to com.fasterxml.jackson.databind,com.google.guice;
+	opens com.jwebmp.guicedpersistence.jpa to com.fasterxml.jackson.databind, com.google.guice;
+	opens com.jwebmp.guicedpersistence.jpa.implementations to com.fasterxml.jackson.databind, com.google.guice;
 }

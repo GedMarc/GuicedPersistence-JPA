@@ -6,7 +6,7 @@ import com.jwebmp.guicedinjection.interfaces.IGuiceDefaultBinder;
 
 @SuppressWarnings("unused")
 public class JPAGuicedPersistenceInterceptionBinding
-		implements IGuiceDefaultBinder<GuiceInjectorModule>
+		implements IGuiceDefaultBinder<JPAGuicedPersistenceInterceptionBinding, GuiceInjectorModule>
 {
 
 	@Override

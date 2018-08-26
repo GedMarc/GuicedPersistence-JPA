@@ -1,6 +1,7 @@
 package com.jwebmp.guicedpersistence.jpa.implementations;
 
 import com.google.inject.Key;
+import com.google.inject.persist.PersistService;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.guicedpersistence.db.annotations.Transactional;
 import org.aopalliance.intercept.MethodInterceptor;
@@ -24,12 +25,18 @@ public class InternalTransactionHandler
 		Transactional t = invocation.getMethod()
 		                            .getAnnotation(Transactional.class);
 		Class<? extends Annotation> entityManagerKey = t.entityManagerAnnotation();
+
 		EntityManager em = GuiceContext.get(Key.get(EntityManager.class, entityManagerKey));
+		PersistService emService = GuiceContext.get(Key.get(PersistService.class, entityManagerKey));
 		EntityTransaction emt = em.getTransaction();
+
 		Object returnable = null;
+
 		boolean alreadyActive = emt.isActive();
+
 		if (!emt.isActive())
 		{
+			emService.start();
 			emt.begin();
 		}
 		try
@@ -48,6 +55,10 @@ public class InternalTransactionHandler
 		{
 			log.log(Level.SEVERE, "Exception In Commit : " + T.getMessage(), T);
 			throw T;
+		}
+		finally
+		{
+			emService.stop();
 		}
 		return returnable;
 	}
