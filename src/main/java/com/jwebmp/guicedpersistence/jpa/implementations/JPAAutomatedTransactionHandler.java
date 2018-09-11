@@ -1,6 +1,7 @@
 package com.jwebmp.guicedpersistence.jpa.implementations;
 
 import com.jwebmp.guicedpersistence.services.ITransactionHandler;
+import com.oracle.jaxb21.PersistenceUnit;
 
 import javax.persistence.EntityManager;
 
@@ -25,44 +26,43 @@ public class JPAAutomatedTransactionHandler
 	}
 
 	@Override
-	public void beginTransacation(boolean createNew, EntityManager entityManager)
+	public void beginTransacation(boolean createNew, EntityManager entityManager, PersistenceUnit persistenceUnit)
 	{
-		if (createNew)
-		{
-			if (!entityManager.getTransaction()
-			                  .isActive() && !transactionExists(entityManager))
-			{
-				entityManager.getTransaction()
-				             .begin();
-			}
-		}
-		if (!entityManager.getTransaction()
-		                  .isActive() && !transactionExists(entityManager))
-		{
-			entityManager.getTransaction()
-			             .begin();
-		}
+		entityManager.getTransaction()
+		             .begin();
+
 	}
 
 	@Override
-	public void commitTransacation(boolean createNew, EntityManager entityManager)
+	public void commitTransacation(boolean createNew, EntityManager entityManager, PersistenceUnit persistenceUnit)
 	{
-		if (transactionExists(entityManager))
-		{
-			entityManager.getTransaction()
-			             .commit();
-		}
+		entityManager.getTransaction()
+		             .commit();
 	}
 
 	@Override
-	public boolean transactionExists(EntityManager entityManager)
+	public void rollbackTransacation(boolean createNew, EntityManager entityManager, PersistenceUnit persistenceUnit)
+	{
+		entityManager.getTransaction()
+		             .rollback();
+	}
+
+	@Override
+	public boolean transactionExists(EntityManager entityManager, PersistenceUnit persistenceUnit)
 	{
 		return entityManager.getTransaction()
 		                    .isActive();
 	}
 
 	@Override
-	public boolean active()
+	public boolean active(PersistenceUnit persistenceUnit)
+	{
+		return persistenceUnit.getTransactionType() == null || persistenceUnit.getTransactionType()
+		                                                                      .equals("RESOURCE_LOCAL");
+	}
+
+	@Override
+	public boolean enableAutomaticControl()
 	{
 		return ACTIVE;
 	}
