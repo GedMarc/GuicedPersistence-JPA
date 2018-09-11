@@ -18,7 +18,7 @@ class GuicedPersistenceBindingTest
 		LogColourFormatter.setRenderBlack(false);
 		GuiceContext.inject();
 
-		AsyncPostStartup.getDbAutoStartupExecutors()
+		AsyncPostStartup.getExecutionService()
 		                .awaitTermination(10, TimeUnit.MINUTES);
 	}
 }
