@@ -12,24 +12,27 @@ public class TestDBPrivateModule
 		extends AbstractDatabaseProviderModule
 {
 
-	@Override
-	protected @NotNull ConnectionBaseInfo getConnectionBaseInfo(PersistenceUnit unit, Properties filteredProperties)
-	{
-		return new JPAConnectionBaseInfo().setPersistenceUnitName(unit.getName());
-	}
-
-	@Override
-	protected String getJndiMapping()
-	{
-		return "jdbc/jndi";
-	}
-
+	@NotNull
 	@Override
 	protected String getPersistenceUnitName()
 	{
 		return "guiceinjectionh2test";
 	}
 
+	@Override
+	protected @NotNull ConnectionBaseInfo getConnectionBaseInfo(PersistenceUnit unit, Properties filteredProperties)
+	{
+		return new JPAConnectionBaseInfo().setPersistenceUnitName(unit.getName());
+	}
+
+	@NotNull
+	@Override
+	protected String getJndiMapping()
+	{
+		return "jdbc/jndi";
+	}
+
+	@NotNull
 	@Override
 	protected Class<? extends Annotation> getBindingAnnotation()
 	{
