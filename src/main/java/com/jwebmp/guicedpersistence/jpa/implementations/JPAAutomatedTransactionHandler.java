@@ -6,9 +6,9 @@ import com.oracle.jaxb21.PersistenceUnit;
 import javax.persistence.EntityManager;
 
 public class JPAAutomatedTransactionHandler
-		implements ITransactionHandler
+		implements ITransactionHandler<JPAAutomatedTransactionHandler>
 {
-	private static boolean ACTIVE = false;
+	private static boolean active = true;
 
 	public JPAAutomatedTransactionHandler()
 	{
@@ -22,7 +22,7 @@ public class JPAAutomatedTransactionHandler
 	 */
 	public static void setActive(boolean active)
 	{
-		JPAAutomatedTransactionHandler.ACTIVE = active;
+		JPAAutomatedTransactionHandler.active = active;
 	}
 
 	@Override
@@ -57,13 +57,7 @@ public class JPAAutomatedTransactionHandler
 	@Override
 	public boolean active(PersistenceUnit persistenceUnit)
 	{
-		return persistenceUnit.getTransactionType() == null || persistenceUnit.getTransactionType()
-		                                                                      .equals("RESOURCE_LOCAL");
-	}
-
-	@Override
-	public boolean enableAutomaticControl()
-	{
-		return ACTIVE;
+		return active && persistenceUnit.getTransactionType() == null || persistenceUnit.getTransactionType()
+		                                                                                .equals("RESOURCE_LOCAL");
 	}
 }
