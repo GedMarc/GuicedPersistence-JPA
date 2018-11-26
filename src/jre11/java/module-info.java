@@ -12,7 +12,7 @@ module com.jwebmp.guicedpersistence.jpa {
 	requires java.persistence;
 	requires com.jwebmp.guicedinjection;
 	requires com.google.guice;
-	requires com.jwebmp.guicedpersistence;
+	requires transitive com.jwebmp.guicedpersistence;
 	requires com.jwebmp.logmaster;
 	requires java.sql;
 	requires java.transaction;
