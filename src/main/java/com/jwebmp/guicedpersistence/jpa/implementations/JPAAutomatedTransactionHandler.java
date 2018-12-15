@@ -10,6 +10,8 @@ public class JPAAutomatedTransactionHandler
 {
 	private static boolean active = true;
 
+	private static final String RESOURCE_LOCAL_STRING = "RESOURCE_LOCAL";
+
 	public JPAAutomatedTransactionHandler()
 	{
 		//No config required
@@ -58,6 +60,6 @@ public class JPAAutomatedTransactionHandler
 	public boolean active(PersistenceUnit persistenceUnit)
 	{
 		return active && persistenceUnit.getTransactionType() == null || persistenceUnit.getTransactionType()
-		                                                                                .equals("RESOURCE_LOCAL");
+		                                                                                .toString().equals(RESOURCE_LOCAL_STRING);
 	}
 }
