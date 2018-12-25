@@ -10,7 +10,6 @@ public class JPAConnectionBaseInfo
 		extends ConnectionBaseInfo
 {
 	private static final Logger log = LogFactory.getLog("JPAConnectionBaseInfo");
-	private boolean driverRegistered;
 
 	/**
 	 * You can fetch it directly from the entity manager using (DataSource)managerFactory.getConnectionFactory()
