@@ -24,6 +24,7 @@
         <dependency>
             <groupId>com.jwebmp.guicedee.persistence</groupId>
             <artifactId>guiced-persistence</artifactId>
+            <type>jar</type>
         </dependency>
 
         <dependency>
