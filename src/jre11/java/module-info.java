@@ -13,7 +13,7 @@ module com.jwebmp.guicedpersistence.jpa {
 	requires com.google.guice.extensions.persist;
 	requires java.validation;
 
-	exports com.jwebmp.guicedpersistence.jpa.implementations to com.jwebmp.guicedinjection, com.jwebmp.examples.demos.homepage;
+	exports com.jwebmp.guicedpersistence.jpa.implementations to com.jwebmp.guicedinjection;
 
 	provides com.jwebmp.guicedpersistence.services.ITransactionHandler with com.jwebmp.guicedpersistence.jpa.implementations.JPAAutomatedTransactionHandler;
 
