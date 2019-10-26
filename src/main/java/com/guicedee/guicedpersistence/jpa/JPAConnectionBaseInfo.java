@@ -1,6 +1,6 @@
-package com.jwebmp.guicedpersistence.jpa;
+package com.guicedee.guicedpersistence.jpa;
 
-import com.jwebmp.guicedpersistence.db.ConnectionBaseInfo;
+import com.guicedee.guicedpersistence.db.ConnectionBaseInfo;
 
 import javax.sql.DataSource;
 

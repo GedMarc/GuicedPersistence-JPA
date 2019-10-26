@@ -1,12 +1,12 @@
-package com.jwebmp.guicedpersistence.jpa.implementations;
+package com.guicedee.guicedpersistence.jpa.implementations;
 
-import com.jwebmp.guicedpersistence.services.ITransactionHandler;
+
 import com.oracle.jaxb21.PersistenceUnit;
 
 import javax.persistence.EntityManager;
 
 public class JPAAutomatedTransactionHandler
-		implements ITransactionHandler<JPAAutomatedTransactionHandler>
+		implements com.guicedee.guicedpersistence.services.ITransactionHandler<JPAAutomatedTransactionHandler>
 {
 	private static boolean active = true;
 
